@@ -1,3 +1,10 @@
+/**
+ * by bestfancc<bestfancc@gmail.com>
+ * 
+ * 时间复杂度为O(n),n为字符串的长度  
+ * 空间复杂度为O(n)
+ *
+ **/
 class Solution {
     function lengthOfLongestSubstring($s) {
         if ($s === '') return 0;
