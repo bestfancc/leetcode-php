@@ -1,4 +1,11 @@
 /**
+ * by bestfancc<bestfancc@gmail.com>
+ * 
+ * 时间复杂度为O(max(n1,n2)),n1为l1的长度，n2为l2的长度
+ * 空间复杂度为O(max(n1,n2)),n1为l1的长度，n2为l2的长度
+ *
+ **/
+/**
  * Definition for a singly-linked list.
  * class ListNode {
  *     public $val = 0;
