@@ -4,7 +4,7 @@
  * by bestfancc<bestfancc@gmail.com>
  * 
  * 时间复杂度为 O(n!),n为数组长度
- * 空间复杂度为 O(n * n!)
+ * 空间复杂度为 O(n!)
  *
  **/
  
