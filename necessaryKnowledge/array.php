@@ -5,7 +5,6 @@
  */
 class MyArray
 {
-    
     //数据
     private $data;
     //容量
