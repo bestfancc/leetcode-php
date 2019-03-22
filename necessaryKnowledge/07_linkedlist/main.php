@@ -1,6 +1,7 @@
 <?php
 namespace Algo_07;
 
+use Algo_06\SingleLinkdListNode;
 use Algo_06\SingleLinkedList;
 
 class SingleLinkedListAlgo
@@ -64,7 +65,59 @@ class SingleLinkedListAlgo
         if ($listB == null) {
             return $listA;
         }
+        $pListA = $listA->head->next;
+        $pListB = $listB->head->next;
+        $newList = new SingleLinkdList();
+        $newHead = $newList->head;
+        $newRootNode = $newHead;
+        while ($pListA != null && $pListB != null) {
+            if ($pListA->data <= $pListB->data) {
+                $newRootNode->next = $pListA;
+                $pListA = $pListA->next;
+            } else {
+                $newRootNode->next = $pListB;
+                $pListB = $pListB->next;
+            }
+            $newRootNode = $newRootNode->next;
+        }
+        if ($pListA != null) {
+            $newRootNode->next = $pListA;
+        }
+        if ($pListB != null) {
+            $newRootNode->next = $pListB;
+        }
+        return $newList;
+    }
 
+    //自己写的，比原作者的代码少了一次while使用
+    public function deleteLastKth($index)
+    {
+        if ($this->list == null || $this->list->head || $this->list->head->next) {
+            return false;
+        }
+        $i = 0;
+        $headA = $this->list->head->next;
+        $headB = $this->list->head->next;
+        while ($headA != null) {
+            $i++;
+            $headA = $headA->next;
+            if ($index >= 0) {
+                $index--;
+            } else {
+                $headB = $headB->next;
+            }
+        }
+        if ($index == 0) return $this->list->head->next->next;
+        $headB->next = $headB->next->next;
+        return $this->list->head->next;
+    }
+
+    public function findMiddleNode()
+    {
+        if ($this->list == null || $this->list->head == null || $this->list->head->next == null) {
+            return false;
+        }
+        $fast = $this
     }
 
 }
