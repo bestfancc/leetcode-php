@@ -2,13 +2,15 @@
 //手打代码学习基础数据结构，来自 https://github.com/bestfancc/algo/blob/master/php/06_linkedlist/SingleLinkedList.php
 
 
-namespace Algo_06;
+//namespace Algo_06;
 
+//use Algo_06\SingleLinkedListNode;
+require 'SingleLinkedListNode.php';
 
 class SingleLinkedList
 {
     /**
-     * @var SingleLinkdListNode
+     * @var SingleLinkedListNode
      */
     public $head;
     /**
@@ -23,7 +25,7 @@ class SingleLinkedList
     public function __construct($head = null)
     {
         if ($head == null) {
-            $this->head = new SingleLinkdListNode();
+            $this->head = new SingleLinkedListNode();
         } else {
             $this->head = $head;
         }
@@ -46,7 +48,7 @@ class SingleLinkedList
         $this->insertDataAfter($this->head, $data);
     }
 
-    public function delete(SingleLinkdListNode $node)
+    public function delete(SingleLinkedListNode $node)
     {
         if ($node == null) {
             return false;
@@ -88,7 +90,8 @@ class SingleLinkedList
         $curNode = $this->head;
         $listLength = $this->getLength();
         while ($curNode != null && $listLength--) {
-            echo $curNode->next->data . ' -> ';
+//            var_dump($curNode->next);
+            echo $curNode->data . ' -> ';
             $curNode = $curNode->next;
         }
         echo 'NULL' . PHP_EOL;
@@ -96,11 +99,11 @@ class SingleLinkedList
     }
 
     /**
-     * @param SingleLinkdListNode $originNode
+     * @param SingleLinkedListNode $originNode
      * @param $data
      * @return bool
      */
-    public function insertDataBefore(SingleLinkdListNode $originNode, $data)
+    public function insertDataBefore(SingleLinkedListNode $originNode, $data)
     {
         if ($originNode == null) {
             return false;
@@ -110,10 +113,10 @@ class SingleLinkedList
     }
 
     /**
-     * @param SingleLinkdListNode $node
-     * @return SingleLinkdListNode|bool|null
+     * @param SingleLinkedListNode $node
+     * @return SingleLinkedListNode|bool|null
      */
-    public function getPreNode(SingleLinkdListNode $node)
+    public function getPreNode(SingleLinkedListNode $node)
     {
         if ($node == null) {
             return false;
@@ -128,16 +131,16 @@ class SingleLinkedList
     }
 
     /**
-     * @param SingleLinkdListNode $originNode
+     * @param SingleLinkedListNode $originNode
      * @param $data
      * @return bool
      */
-    public function insertDataAfter(SingleLinkdListNode $originNode, $data)
+    public function insertDataAfter(SingleLinkedListNode $originNode, $data)
     {
         if ($originNode == null) {
             return false;
         }
-        $newNode  = new SingleLinkdListNode();
+        $newNode  = new SingleLinkedListNode();
         $newNode->data = $data;
         $newNode->next = $originNode->next;
         $originNode->next = $newNode;
@@ -156,15 +159,27 @@ class SingleLinkedList
         $node5 = new SingleLinkedListNode($data[5]);
         $node6 = new SingleLinkedListNode($data[6]);
         $node7 = new SingleLinkedListNode($data[7]);
-        $this->insertNodeAfter($this->head, $node0);
-        $this->insertNodeAfter($node0, $node1);
-        $this->insertNodeAfter($node1, $node2);
-        $this->insertNodeAfter($node2, $node3);
-        $this->insertNodeAfter($node3, $node4);
-        $this->insertNodeAfter($node4, $node5);
-        $this->insertNodeAfter($node5, $node6);
-        $this->insertNodeAfter($node6, $node7);
+//        $this->insertDataAfter($this->head, $node0);
+//        $this->insertDataAfter($node0, $node1);
+//        $this->insertDataAfter($node1, $node2);
+//        $this->insertDataAfter($node2, $node3);
+//        $this->insertDataAfter($node3, $node4);
+//        $this->insertDataAfter($node4, $node5);
+//        $this->insertDataAfter($node5, $node6);
+//        $this->insertDataAfter($node6, $node7);
+        $this->head->next = $node0;
+        $node0->next = $node1;
+        $node1->next = $node2;
+        $node2->next = $node3;
+        $node3->next = $node4;
+        $node4->next = $node5;
+        $node5->next = $node6;
+        $node6->next = $node7;
         $node7->next = $node4;
+//        $this->printList();
+//        return $this->head;
+//
+//        $this->printList();
     }
 
 

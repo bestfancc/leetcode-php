@@ -1,8 +1,13 @@
 <?php
-namespace Algo_07;
+header("content-type:text/html;charset=utf-8");
+echo "输出中文汉字";
+//namespace Algo_07;
 
-use Algo_06\SingleLinkdListNode;
-use Algo_06\SingleLinkedList;
+
+require '../06_linkedlist/SingleLinkedList.php';
+
+//use Algo_06\SingleLinkedListNode;
+//use Algo_06\SingleLinkedList;
 
 class SingleLinkedListAlgo
 {
@@ -50,24 +55,27 @@ class SingleLinkedListAlgo
         while ($fast != null && $fast->next != null) {
             $fast = $fast->next->next;
             $slow = $slow->next;
+//            var_dump($fast->data);
+//            var_dump($slow->data);
             if ($fast == $slow) {
                 return true;
             }
-            return false;
         }
+//        var_dump(1);
+        return false;
     }
 
     public function mergeSortedList(SingleLinkedList $listA, SingleLinkedList $listB)
     {
-        if ($listA == null) {
+        if (null == $listA) {
             return $listB;
         }
-        if ($listB == null) {
+        if (null == $listB) {
             return $listA;
         }
         $pListA = $listA->head->next;
         $pListB = $listB->head->next;
-        $newList = new SingleLinkdList();
+        $newList = new SingleLinkedList();
         $newHead = $newList->head;
         $newRootNode = $newHead;
         while ($pListA != null && $pListB != null) {
@@ -80,9 +88,11 @@ class SingleLinkedListAlgo
             }
             $newRootNode = $newRootNode->next;
         }
+        // 如果第一个链表未处理完，拼接到新链表后面
         if ($pListA != null) {
             $newRootNode->next = $pListA;
         }
+        // 如果第二个链表未处理完，拼接到新链表后面
         if ($pListB != null) {
             $newRootNode->next = $pListB;
         }
@@ -92,6 +102,7 @@ class SingleLinkedListAlgo
     //自己写的，比原作者的代码少了一次while使用
     public function deleteLastKth($index)
     {
+//        var_dump($this->list);
         if ($this->list == null || $this->list->head || $this->list->head->next) {
             return false;
         }
@@ -107,8 +118,10 @@ class SingleLinkedListAlgo
                 $headB = $headB->next;
             }
         }
+//        $this->list->printList();
         if ($index == 0) return $this->list->head->next->next;
         $headB->next = $headB->next->next;
+//        $this->list->printList();
         return $this->list->head->next;
     }
 
@@ -117,7 +130,80 @@ class SingleLinkedListAlgo
         if ($this->list == null || $this->list->head == null || $this->list->head->next == null) {
             return false;
         }
-        $fast = $this
+        $fast = $this->list->head->next;
+        $slow = $this->list->head->next;
+
+        while ($fast != null && $fast->next != null) {
+            $fast = $fast->next->next;
+            $slow = $slow->next;
+        }
+        return $slow;
     }
 
 }
+
+
+echo '---------------------- 单链表反转 ----------------------' . PHP_EOL . PHP_EOL;
+$list = new SingleLinkedList();
+$list->insert(1);
+$list->insert(2);
+$list->insert(3);
+$list->insert(6);
+$list->insert(5);
+$list->insert(6);
+$list->insert(7);
+// 单链表反转
+$listAlgo = new SingleLinkedListAlgo($list);
+$listAlgo->list->printList();
+$listAlgo->reverse();
+$listAlgo->list->printList();
+echo '--------------------------------------------------------' . PHP_EOL . PHP_EOL;
+echo '---------------------- 链表中环的检测 ----------------------'. PHP_EOL . PHP_EOL;
+// 链表中环的检测
+$listCircle = new SingleLinkedList();
+$listCircle->buildCycleList();
+$listAlgo->setList($listCircle);
+//$listAlgo->list->printList();
+var_dump($listAlgo->checkCycle());
+echo '------------------------------------------------------------' . PHP_EOL . PHP_EOL;
+echo '---------------------- 两个有序的链表合并 ----------------------' . PHP_EOL . PHP_EOL;
+// 两个有序的链表合并
+$listA = new SingleLinkedList();
+$listA->insert(9);
+$listA->insert(7);
+$listA->insert(5);
+$listA->insert(3);
+$listA->insert(1);
+$listA->printList();
+$listB = new SingleLinkedList();
+$listB->insert(10);
+$listB->insert(8);
+$listB->insert(6);
+$listB->insert(4);
+$listB->insert(2);
+$listB->printList();
+$listAlgoMerge = new SingleLinkedListAlgo();
+$newList = $listAlgoMerge->mergeSortedList($listA, $listB);
+$newList->printList();
+echo '----------------------------------------------------------------'. PHP_EOL . PHP_EOL;
+echo '---------------------- 删除链表倒数第n个结点 ----------------------' . PHP_EOL . PHP_EOL;
+// 删除链表倒数第n个结点
+$listDelete = new SingleLinkedList();
+$listDelete->insert(1);
+$listDelete->insert(2);
+$listDelete->insert(3);
+$listDelete->insert(4);
+$listDelete->insert(5);
+$listDelete->insert(6);
+$listDelete->insert(7);
+$listDelete->printList();
+$listAlgo->setList($listDelete);
+$listAlgo->deleteLastKth(2);
+$listDelete->printList();
+echo '------------------------------------------------------------------'. PHP_EOL . PHP_EOL;
+echo '---------------------- 求链表的中间结点 ----------------------' . PHP_EOL . PHP_EOL;
+// 求链表的中间结点
+$listAlgo->setList($list);
+$middleNode = $listAlgo->findMiddleNode();
+var_dump($middleNode->data);
+echo '-------------------------------------------------------------'. PHP_EOL . PHP_EOL;
