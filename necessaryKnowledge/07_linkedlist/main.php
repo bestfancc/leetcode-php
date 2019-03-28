@@ -1,6 +1,6 @@
 <?php
-header("content-type:text/html;charset=utf-8");
-echo "输出中文汉字";
+//header("content-type:text/html;charset=utf-8");
+//echo "输出中文汉字";
 //namespace Algo_07;
 
 
@@ -77,7 +77,15 @@ class SingleLinkedListAlgo
         $pListB = $listB->head->next;
         $newList = new SingleLinkedList();
         $newHead = $newList->head;
+        if ($pListA->data <= $pListB->data) {
+            $newHead = $pListA;
+            $pListA = $pListA->next;
+        } else {
+            $newHead = $pListB;
+            $pListB = $pListB->next;
+        }
         $newRootNode = $newHead;
+//        var_dump($newHead);
         while ($pListA != null && $pListB != null) {
             if ($pListA->data <= $pListB->data) {
                 $newRootNode->next = $pListA;
@@ -86,6 +94,7 @@ class SingleLinkedListAlgo
                 $newRootNode->next = $pListB;
                 $pListB = $pListB->next;
             }
+//            var_dump($newRootNode->data);
             $newRootNode = $newRootNode->next;
         }
         // 如果第一个链表未处理完，拼接到新链表后面
@@ -96,14 +105,16 @@ class SingleLinkedListAlgo
         if ($pListB != null) {
             $newRootNode->next = $pListB;
         }
+//        var_dump($newHead);exit;
+        $newList->head->next = $newHead;
+//        $newList->printList();exit;
         return $newList;
     }
 
     //自己写的，比原作者的代码少了一次while使用
     public function deleteLastKth($index)
     {
-//        var_dump($this->list);
-        if ($this->list == null || $this->list->head || $this->list->head->next) {
+        if ($this->list == null || $this->list->head == null || $this->list->head->next == null) {
             return false;
         }
         $i = 0;
@@ -112,17 +123,24 @@ class SingleLinkedListAlgo
         while ($headA != null) {
             $i++;
             $headA = $headA->next;
-            if ($index >= 0) {
+            if ($index > 0) {
                 $index--;
             } else {
                 $headB = $headB->next;
             }
         }
-//        $this->list->printList();
-        if ($index == 0) return $this->list->head->next->next;
+//        var_dump($headB);
+//        var_dump($index);
+//
+//        exit;
+        if ($index == 0) {
+            $this->list->head->next = $this->list->head->next->next;
+            return true;
+        }
+        if ($index > 0) return true;
         $headB->next = $headB->next->next;
-//        $this->list->printList();
-        return $this->list->head->next;
+//        echo $index;exit;
+        return false;
     }
 
     public function findMiddleNode()
@@ -198,12 +216,12 @@ $listDelete->insert(6);
 $listDelete->insert(7);
 $listDelete->printList();
 $listAlgo->setList($listDelete);
-$listAlgo->deleteLastKth(2);
+$listAlgo->deleteLastKth(3);
 $listDelete->printList();
 echo '------------------------------------------------------------------'. PHP_EOL . PHP_EOL;
 echo '---------------------- 求链表的中间结点 ----------------------' . PHP_EOL . PHP_EOL;
 // 求链表的中间结点
-$listAlgo->setList($list);
+$listAlgo->list->printList();
 $middleNode = $listAlgo->findMiddleNode();
 var_dump($middleNode->data);
 echo '-------------------------------------------------------------'. PHP_EOL . PHP_EOL;

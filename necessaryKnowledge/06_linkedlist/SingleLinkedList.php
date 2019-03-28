@@ -89,8 +89,7 @@ class SingleLinkedList
         }
         $curNode = $this->head;
         $listLength = $this->getLength();
-        while ($curNode != null && $listLength--) {
-//            var_dump($curNode->next);
+        while ($curNode != null) {
             echo $curNode->data . ' -> ';
             $curNode = $curNode->next;
         }
@@ -159,14 +158,6 @@ class SingleLinkedList
         $node5 = new SingleLinkedListNode($data[5]);
         $node6 = new SingleLinkedListNode($data[6]);
         $node7 = new SingleLinkedListNode($data[7]);
-//        $this->insertDataAfter($this->head, $node0);
-//        $this->insertDataAfter($node0, $node1);
-//        $this->insertDataAfter($node1, $node2);
-//        $this->insertDataAfter($node2, $node3);
-//        $this->insertDataAfter($node3, $node4);
-//        $this->insertDataAfter($node4, $node5);
-//        $this->insertDataAfter($node5, $node6);
-//        $this->insertDataAfter($node6, $node7);
         $this->head->next = $node0;
         $node0->next = $node1;
         $node1->next = $node2;
@@ -176,10 +167,6 @@ class SingleLinkedList
         $node5->next = $node6;
         $node6->next = $node7;
         $node7->next = $node4;
-//        $this->printList();
-//        return $this->head;
-//
-//        $this->printList();
     }
 
 
