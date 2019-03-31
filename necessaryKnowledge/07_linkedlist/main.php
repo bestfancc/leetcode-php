@@ -1,13 +1,12 @@
 <?php
-//header("content-type:text/html;charset=utf-8");
-//echo "输出中文汉字";
-//namespace Algo_07;
+
+namespace Algo_07;
 
 
-require '../06_linkedlist/SingleLinkedList.php';
+//require '../06_linkedlist/SingleLinkedList.php';
 
-//use Algo_06\SingleLinkedListNode;
-//use Algo_06\SingleLinkedList;
+use Algo_06\SingleLinkedListNode;
+use Algo_06\SingleLinkedList;
 
 class SingleLinkedListAlgo
 {

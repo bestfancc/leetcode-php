@@ -2,10 +2,10 @@
 //手打代码学习基础数据结构，来自 https://github.com/bestfancc/algo/blob/master/php/06_linkedlist/SingleLinkedList.php
 
 
-//namespace Algo_06;
+namespace Algo_06;
 
 //use Algo_06\SingleLinkedListNode;
-require 'SingleLinkedListNode.php';
+//require 'SingleLinkedListNode.php';
 
 class SingleLinkedList
 {

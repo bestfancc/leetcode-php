@@ -1,0 +1,20 @@
+{
+    "name": "bestfancc/leetcode",
+    "description": "no desc",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "bestfancc",
+            "email": "bestfancc@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Algo_06\\": "06_linkedlist/",
+            "Algo_07\\": "07_linkedlist/"
+        }
+    }
+}
