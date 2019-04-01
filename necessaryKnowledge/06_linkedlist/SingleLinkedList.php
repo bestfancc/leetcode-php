@@ -4,8 +4,6 @@
 
 namespace Algo_06;
 
-//use Algo_06\SingleLinkedListNode;
-//require 'SingleLinkedListNode.php';
 
 class SingleLinkedList
 {

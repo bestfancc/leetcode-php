@@ -54,13 +54,10 @@ class SingleLinkedListAlgo
         while ($fast != null && $fast->next != null) {
             $fast = $fast->next->next;
             $slow = $slow->next;
-//            var_dump($fast->data);
-//            var_dump($slow->data);
             if ($fast == $slow) {
                 return true;
             }
         }
-//        var_dump(1);
         return false;
     }
 
@@ -84,7 +81,6 @@ class SingleLinkedListAlgo
             $pListB = $pListB->next;
         }
         $newRootNode = $newHead;
-//        var_dump($newHead);
         while ($pListA != null && $pListB != null) {
             if ($pListA->data <= $pListB->data) {
                 $newRootNode->next = $pListA;
@@ -93,7 +89,6 @@ class SingleLinkedListAlgo
                 $newRootNode->next = $pListB;
                 $pListB = $pListB->next;
             }
-//            var_dump($newRootNode->data);
             $newRootNode = $newRootNode->next;
         }
         // 如果第一个链表未处理完，拼接到新链表后面
@@ -104,9 +99,7 @@ class SingleLinkedListAlgo
         if ($pListB != null) {
             $newRootNode->next = $pListB;
         }
-//        var_dump($newHead);exit;
         $newList->head->next = $newHead;
-//        $newList->printList();exit;
         return $newList;
     }
 
@@ -128,17 +121,12 @@ class SingleLinkedListAlgo
                 $headB = $headB->next;
             }
         }
-//        var_dump($headB);
-//        var_dump($index);
-//
-//        exit;
         if ($index == 0) {
             $this->list->head->next = $this->list->head->next->next;
             return true;
         }
         if ($index > 0) return true;
         $headB->next = $headB->next->next;
-//        echo $index;exit;
         return false;
     }
 
