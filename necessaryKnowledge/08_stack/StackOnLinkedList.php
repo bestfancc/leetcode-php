@@ -3,6 +3,7 @@
 namespace Algo_08;
 
 use Algo_06\SingleLinkedList;
+use Algo_06\SingleLinkedListNode;
 
 class StackOnLinkedList
 {
@@ -10,7 +11,7 @@ class StackOnLinkedList
     public $length;
     public function __construct()
     {
-        $this->head = new SingleLinkedList();
+        $this->head = new SingleLinkedListNode();
         $this->length = 0;
     }
     public function pop()
@@ -38,7 +39,7 @@ class StackOnLinkedList
     }
     public function pushData($data)
     {
-        $node = new SingleLinkedList($data);
+        $node = new SingleLinkedListNode($data);
         if (!$this->pushNode($node)) {
             return false;
         }

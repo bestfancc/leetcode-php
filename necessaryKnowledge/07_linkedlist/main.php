@@ -2,10 +2,10 @@
 
 namespace Algo_07;
 
-
-//require '../06_linkedlist/SingleLinkedList.php';
-
-use Algo_06\SingleLinkedListNode;
+require_once __DIR__ . '/../../vendor/autoload.php';
+//require __DIR__ . '/../06_linkedlist/SingleLinkedList.php';
+//exit;
+//use Algo_06\SingleLinkedListNode;
 use Algo_06\SingleLinkedList;
 
 class SingleLinkedListAlgo

@@ -1,7 +1,15 @@
 <?php
 namespace Algo_08;
-require_once '../vendor/autoload.php';
+
+require_once '../../vendor/autoload.php';
+
+use Algo_08\StackOnLinkedList;
+use Algo_06\SingleLinkedListNode;
+
 $stack = new StackOnLinkedList();
+//exit;
+
+
 $stack->pushData(1);
 $stack->pushData(2);
 $stack->pushData(3);
