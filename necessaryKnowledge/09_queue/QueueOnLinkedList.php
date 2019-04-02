@@ -20,8 +20,12 @@ class QueueOnLinkedList
     {
         $newNode = new SingleLinkedListNode($data);
 
-        $newNode->next = $this->tail->next;
-        $this->tail = $newNode;
+        $newNode->next = $this->head->next;
+        $this->head->next = $newNode;
+//        if (0 == $this->length) {
+            $this->tail = $newNode;
+//        }
+        var_dump($this->tail);
         $this->length++;
     }
 
@@ -33,14 +37,14 @@ class QueueOnLinkedList
         $node = $this->head->next;
         $this->head->next = $this->head->next->next;
         $this->length--;
-        return$node;
+        return $node;
     }
     public function getLength()
     {
         return $this->length;
     }
 
-    public function printSelt()
+    public function printSelf()
     {
         if (0 == $this->length) {
             echo 'empty queue' . PHP_EOL;
