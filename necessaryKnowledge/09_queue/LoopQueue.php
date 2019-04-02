@@ -47,11 +47,11 @@ class LoopQueue
 }
 
 $queue = new LoopQueue(4);
- var_dump($queue);
+// var_dump($queue);
 $queue->enQueue(1);
-var_dump($queue);
+//var_dump($queue);
 $queue->enQueue(2);
-var_dump($queue);
+//var_dump($queue);
 $queue->enQueue(3);
 $queue->enQueue(4);
 // $queue->enQueue(5);
