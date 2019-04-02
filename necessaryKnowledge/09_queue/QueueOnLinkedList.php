@@ -20,11 +20,8 @@ class QueueOnLinkedList
     {
         $newNode = new SingleLinkedListNode($data);
 
-        $newNode->next = $this->head->next;
-        $this->head->next = $newNode;
-//        if (0 == $this->length) {
-            $this->tail = $newNode;
-//        }
+        $this->tail->next = $newNode;
+        $this->tail = $newNode;
         var_dump($this->tail);
         $this->length++;
     }
