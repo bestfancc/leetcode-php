@@ -3,9 +3,6 @@ namespace Algo_08;
 
 require_once '../../vendor/autoload.php';
 
-use Algo_08\StackOnLinkedList;
-use Algo_06\SingleLinkedListNode;
-use Algo_08\StackOnArray;
 
 //$stack = new StackOnLinkedList();
 $stack = new StackOnArray();
