@@ -5,7 +5,7 @@
  * 空间复杂度为O(n)
  *   
  **/
- 
+ //1.栈的解法
  class Solution {
 
     /**
@@ -30,5 +30,28 @@
             }
         }
         return $res;
+    }
+}
+  //2.动态规划的解法
+  class Solution {
+
+    /**
+     * @param String $s
+     * @return Integer
+     */
+    function longestValidParentheses($s) {
+        $length = strlen($s);
+        $maxLen = 0;
+        $dp = array();
+        for ($i = 1; $i <= $length; $i++) {
+            $j = $i - 2 - $dp[$i-1];
+            if ($s[$i-1] == '(' || $j < 0 || $s[$j] == ')') {
+                $dp[$i] = 0;
+            } else {
+                $dp[$i] = $dp[$i-1] + 2 + $dp[$j];
+                $maxLen = max($maxLen, $dp[$i]);
+            }
+        }
+        return $maxLen;
     }
 }
